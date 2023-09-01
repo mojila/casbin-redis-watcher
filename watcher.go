@@ -51,15 +51,14 @@ const (
 // addr is a redis target string in the format "host:port"
 // setters allows for inline WatcherOptions
 //
-// 		Example:
-// 				w, err := rediswatcher.NewWatcher("127.0.0.1:6379", rediswatcher.Password("pass"), rediswatcher.Channel("/yourchan"))
+//	Example:
+//			w, err := rediswatcher.NewWatcher("127.0.0.1:6379", rediswatcher.Password("pass"), rediswatcher.Channel("/yourchan"))
 //
 // A custom redis.Conn can be provided to NewWatcher
 //
-// 		Example:
-// 				c, err := redis.Dial("tcp", ":6379")
-// 				w, err := rediswatcher.NewWatcher("", rediswatcher.WithRedisConnection(c)
-//
+//	Example:
+//			c, err := redis.Dial("tcp", ":6379")
+//			w, err := rediswatcher.NewWatcher("", rediswatcher.WithRedisConnection(c)
 func NewWatcher(addr string, setters ...WatcherOption) (persist.Watcher, error) {
 	w := &Watcher{
 		closed:     make(chan struct{}),
@@ -67,7 +66,7 @@ func NewWatcher(addr string, setters ...WatcherOption) (persist.Watcher, error) 
 	}
 
 	w.options = WatcherOptions{
-		Channel:            "/casbin",
+		Channel:            "casbin",
 		Protocol:           "tcp",
 		LocalID:            uuid.New().String(),
 		SquashTimeoutShort: defaultShortMessageInTimeout,
@@ -115,7 +114,7 @@ func NewPublishWatcher(addr string, setters ...WatcherOption) (persist.Watcher, 
 	}
 
 	w.options = WatcherOptions{
-		Channel:            "/casbin",
+		Channel:            "casbin",
 		Protocol:           "tcp",
 		LocalID:            uuid.New().String(),
 		SquashTimeoutShort: defaultShortMessageInTimeout,
