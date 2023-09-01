@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	rediswatcher "github.com/billcobbler/casbin-redis-watcher/v2"
+	rediswatcher "github.com/mojila/casbin-redis-watcher"
 )
 
 func main() {
